@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/Ali-moussa.png",
   },
+  other: {
+    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
+  },
 };
 
 export default function RootLayout({
