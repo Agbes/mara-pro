@@ -27,9 +27,9 @@ export type SEOProps = {
 const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || "",
   url: process.env.NEXT_PUBLIC_URL_SITE_BASE || "",
-  // other: {
-  //   "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
-  // },
+  other: {
+    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
+  },
   twitter: process.env.NEXT_PUBLIC_TWITER_NAME || "",
   defaultImage: `${process.env.NEXT_PUBLIC_URL_SITE_BASE}/images/ali-moussa.jpg`,
 };
@@ -58,6 +58,7 @@ export function generateStaticMetadata({
     title: `${title} | ${siteConfig.name}`,
     description,
     keywords: ogKeywords,
+    other: other || siteConfig.other,
     openGraph: {
       title: `${title} | ${siteConfig.name}`,
       description,
@@ -157,6 +158,7 @@ export function seoPropsFromArticle(article: ArticleWithRelations): SEOProps {
     datePublished: article.createdAt?.toISOString(),
     dateModified: article.updatedAt?.toISOString(),
     type: "Article",
+    other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
   };
 }
 
@@ -186,6 +188,7 @@ export async function seoPropsFromTagDynamic(tagSlug: string): Promise<SEOProps>
     path: `/tags/${tag.slug}`,
     tags: allTags,
     type: "WebSite",
+    other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
   };
 }
 
@@ -216,6 +219,7 @@ export async function seoPropsFromCategoryDynamic(categorySlug: string): Promise
     tags: allTags,
     section: category.name,
     type: "WebSite",
+    other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
   };
 }
 
