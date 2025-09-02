@@ -2,7 +2,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
-import { baseUrl } from "@/lib/constant";
 import nodemailer from "nodemailer";
 import { getVerificationEmailTemplate } from "@/lib/emailTemplates";
 export async function POST(req: Request) {
@@ -39,7 +38,7 @@ export async function POST(req: Request) {
         });
 
         // URL de confirmation
-        const confirmUrl = `${baseUrl}/verify-email?token=${verificationToken}&email=${email}`;
+        const confirmUrl = `${process.env.NEXT_PUBLIC_URL_SITE_BASE}verify-email?token=${verificationToken}&email=${email}`;
 
         // Envoi de l'email
 

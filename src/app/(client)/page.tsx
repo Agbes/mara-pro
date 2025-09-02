@@ -18,14 +18,7 @@ export const metadata = generateStaticMetadata(seoAccueil);
 export default async function Home() {
     return (
         <>
-
-            <Head>
-                <meta
-                    name="google-site-verification"
-                    content="LUKqTDB1Xti6aVrI8QHtMAIIfpYAqkDYMWDCicuT2Wg"
-                />
-                <title>{seoAccueil.title}</title>
-            </Head>
+          
             <Head>
                 <JsonLD seo={seoAccueil} />
             </Head>
