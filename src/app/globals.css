@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@plugin "daisyui";
+
+
+.blob {
+    background: radial-gradient(circle at 30% 30%, rgba(14, 165, 233, .25), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(6, 182, 212, .25), transparent 45%);
+    filter: blur(40px);
+}
+
+
+/* S'assure que le widget Cloudinary est au-dessus du modal */
+/* .cloudinary-fileupload, 
+.cloudinary-widget, 
+iframe[src*="cloudinary"] {
+  z-index: 999999 !important;
+} */
