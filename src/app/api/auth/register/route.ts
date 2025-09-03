@@ -38,7 +38,7 @@ export async function POST(req: Request) {
         });
 
         // URL de confirmation
-        const confirmUrl = `${process.env.NEXT_PUBLIC_URL_SITE_BASE}verify-email?token=${verificationToken}&email=${email}`;
+        const confirmUrl = `${process.env.NEXT_PUBLIC_URL_SITE_BASE}/verify-email?token=${verificationToken}&email=${email}`;
 
         // Envoi de l'email
 
