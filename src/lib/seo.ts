@@ -1,4 +1,3 @@
-// lib/seo.ts
 import { Article } from "@prisma/client";
 import type { Metadata } from "next";
 import prisma from "./prisma";
@@ -25,14 +24,28 @@ export type SEOProps = {
 // Config site
 // ----------------------------
 const siteConfig = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME || "",
-  url: process.env.NEXT_PUBLIC_URL_SITE_BASE || "",
+  name: process.env.NEXT_PUBLIC_SITE_NAME || "Medium Ali Moussa",
+  url: process.env.NEXT_PUBLIC_URL_SITE_BASE || "https://www.medium-ali-moussa.com",
   other: {
     "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
   },
-  twitter: process.env.NEXT_PUBLIC_TWITER_NAME || "",
-  defaultImage: `${process.env.NEXT_PUBLIC_URL_SITE_BASE}/images/ali-moussa.jpg`,
+  twitter: process.env.NEXT_PUBLIC_TWITER_NAME || "@mediumAliMoussa",
+  defaultImage: `${process.env.NEXT_PUBLIC_URL_SITE_BASE || "https://www.medium-ali-moussa.com"}/images/ali-moussa.jpg`,
 };
+
+// ----------------------------
+// Keywords automatiques
+// ----------------------------
+function enrichKeywords(base: string[]) {
+  const extra = [
+    "Medium Ali Moussa",
+    "marabout puissant",
+    "rituels africains",
+    "retour affectif",
+    "désenvoûtement",
+  ];
+  return Array.from(new Set([...base, ...extra]));
+}
 
 // ----------------------------
 // Génération Metadata pour Next.js
@@ -46,19 +59,27 @@ export function generateStaticMetadata({
   other,
   tags = [],
   section,
+  type = "WebSite",
 }: SEOProps): Metadata {
   const fullUrl = `${siteConfig.url}${path}`;
   const imageUrl = image || siteConfig.defaultImage;
 
-  // Combiner tags et section dans keywords pour OG
   const ogKeywords = [...keywords, ...tags];
   if (section) ogKeywords.push(section);
+
+  const enrichedKeywords = enrichKeywords(ogKeywords);
+
+  // ✅ conversion WebSite → website, Article → article
+  const ogType = type === "Article" ? "article" : "website";
 
   return {
     title: `${title} | ${siteConfig.name}`,
     description,
-    keywords: ogKeywords,
+    keywords: enrichedKeywords,
     other: other || siteConfig.other,
+    alternates: {
+      canonical: fullUrl,
+    },
     openGraph: {
       title: `${title} | ${siteConfig.name}`,
       description,
@@ -66,7 +87,7 @@ export function generateStaticMetadata({
       siteName: siteConfig.name,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
       locale: "fr_FR",
-      type: "article", // suffisant pour OG
+      type: ogType, // <-- corrigé
     },
     twitter: {
       card: "summary_large_image",
@@ -81,11 +102,10 @@ export function generateStaticMetadata({
     },
   };
 }
-
 // ----------------------------
 // JSON-LD pour Google
 // ----------------------------
-type JSONLDWebSite = {
+type JSONLD = {
   "@context": "https://schema.org";
   "@type": "WebSite" | "Article";
   name: string;
@@ -96,6 +116,11 @@ type JSONLDWebSite = {
   datePublished?: string;
   dateModified?: string;
   keywords?: string;
+  publisher?: {
+    "@type": "Organization";
+    name: string;
+    logo: { "@type": "ImageObject"; url: string };
+  };
 };
 
 export function generateJSONLD({
@@ -111,7 +136,7 @@ export function generateJSONLD({
 }: SEOProps) {
   const fullUrl = `${siteConfig.url}${path}`;
 
-  const json: JSONLDWebSite = {
+  const json: JSONLD = {
     "@context": "https://schema.org",
     "@type": type,
     name: title,
@@ -120,10 +145,21 @@ export function generateJSONLD({
   };
 
   if (image) json.image = image;
-  if (authorName) json.author = { "@type": "Person", name: authorName };
-  if (datePublished) json.datePublished = datePublished;
-  if (dateModified) json.dateModified = dateModified;
   if (tags.length) json.keywords = tags.join(", ");
+
+  if (type === "Article") {
+    json.author = { "@type": "Person", name: authorName || "Medium Ali Moussa" };
+    if (datePublished) json.datePublished = datePublished;
+    if (dateModified) json.dateModified = dateModified;
+    json.publisher = {
+      "@type": "Organization",
+      name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/favicon.ico`,
+      },
+    };
+  }
 
   return JSON.stringify(json);
 }
@@ -226,8 +262,6 @@ export async function seoPropsFromCategoryDynamic(categorySlug: string): Promise
 // ----------------------------
 // Génération dynamique Next.js
 // ----------------------------
-
-
 export async function generateMetadataTag({ params }: { params: { slug: string } }): Promise<Metadata> {
   const seoProps = await seoPropsFromTagDynamic(params.slug);
   return generateStaticMetadata(seoProps);
@@ -251,6 +285,7 @@ export async function generateMetadataArticle({ params }: { params: { slug: stri
     return generateStaticMetadata({
       title: "Article non trouvé",
       description: "Cet article n’existe pas.",
+      type: "WebSite",
     });
   }
 

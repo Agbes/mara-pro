@@ -5,16 +5,7 @@ import SessionWrappers from "@/lib/sessionWrappers";
 import { FooterAnalytic, HeadAnalytic } from "@/components/GoogleAnalytic";
 import Head from "next/head";
 
-// export const metadata: Metadata = {
-//   title: "Medium Moussa Ali",
-//   description: "Puissant medium marabout Moussa Ali",
-//   icons: {
-//     icon: "/Ali-moussa.png",
-//   },
-//   other: {
-//     "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
-//   },
-// };
+
 
 export default function RootLayout({
   children,

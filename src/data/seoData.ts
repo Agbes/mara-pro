@@ -1,14 +1,19 @@
-type SEOProps = {
+export type SEOProps = {
   title: string;
   description: string;
   keywords?: string[];
-  path?: string; // pour générer l'URL complète
+  path?: string;
   image?: string;
+  other?: Record<string, string>;
+  tags?: string[];
+  section?: string;
+  authorName?: string;
+  datePublished?: string;
+  dateModified?: string;
+  type?: "WebSite" | "Article";
 };
 
-
-
-export const seoAccueil : SEOProps ={
+export const seoAccueil: SEOProps = {
   title: "Accueil Ali",
   description:
     "Découvrez l’univers des rituels puissants : amour, justice, protection et prospérité. Des solutions spirituelles authentiques pour transformer votre vie.",
@@ -22,40 +27,30 @@ export const seoAccueil : SEOProps ={
     "rituel puissant",
   ],
   path: "/",
+  tags: ["rituels", "amour", "justice", "protection", "prospérité"],
+  section: "Accueil",
+  authorName: "Medium Ali Moussa",
+  type: "WebSite",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoRetourAffectif: SEOProps = {
   title: "Rituels Mystiques pour le Retour Affectif et la Réconciliation Amoureuse",
-  description: "Découvrez nos rituels puissants pour réunir les couples, raviver les sentiments et attirer l'amour perdu. Une tradition mystique transmise depuis plus de 40 ans.",
+  description:
+    "Découvrez nos rituels puissants pour réunir les couples, raviver les sentiments et attirer l'amour perdu. Une tradition mystique transmise depuis plus de 40 ans.",
   keywords: [
     "retour affectif",
     "rituel retour affectif",
     "rituel retour affectif avec photo",
     "medium retour affectif",
-    "temoignage retour affectif",
-    "marabout retour affectif rapide",
-    "combien de temps pour un retour affectif",
-    "retour affectif amoureux",
-    "retour affectif rapide en 24h",
-    "retour affectif amoureux immédiat",
-    "retour affectif avis",
-    "retour affectif à faire soi-même",
-    "retour affectif Belgique",
-    "retour affectif de l'être aimé",
-    "retour affectif est ce que ça marche",
-    "comment faire un retour affectif",
-    "comment fonctionne un retour affectif",
-    "comment fonctionne le retour affectif rapide de l'être aimé",
-    "rituel de retour affectif",
-    "rituel de retour affectif rapide",
-    "retour affectif efficace",
-    "retour affectif immédiat en 24h",
-    "retour affectif rapide efficace",
-    "retour affectif réussi",
   ],
   path: "/rituels/retour-affectif",
+  tags: ["retour affectif", "amour", "réconciliation", "couple"],
+  section: "Retour Affectif",
+  authorName: "Medium Ali Moussa",
+  type: "Article",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
-
 
 export const seoEnvoutement: SEOProps = {
   title: "Rituels Mystiques d'Envoutement et d'Attraction Puissante",
@@ -69,6 +64,11 @@ export const seoEnvoutement: SEOProps = {
     "envoutement réussite",
   ],
   path: "/rituels/envoutement",
+  tags: ["envoutement", "amour", "chance", "réussite", "attraction"],
+  section: "Envoutement",
+  authorName: "Medium Ali Moussa",
+  type: "Article",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoJustice: SEOProps = {
@@ -79,58 +79,15 @@ export const seoJustice: SEOProps = {
     "rituel pour gagner une affaire de justice",
     "gagner une affaire de justice rapidement",
     "rituel pour gagner un procès",
-    "marabout bénin",
-    "maître marabout",
     "marabout Ali Moussa",
-    "sortir une personne de prison",
-    "manipulation esprit du procureur",
-    "rituel vaudou béninois",
-    "rites pour gagner un procès",
-    "offrandes pour gagner un procès",
-    "sacrifices rituels pour procès",
-    "envoutement rapide procureur",
-    "rituels pour gagner une affaire judiciaire",
-    "marabout sorcier bénin",
-    "consultation marabout bénin",
-    "rites et prières pour justice",
-    "rituels pour avocat ou procureur",
-    "rituels puissants pour procès",
-    "rituels personnalisés pour gagner une affaire",
-    "aide marabout pour procès",
-    "rituel de justice rapide",
-    "rituels vaudou",
-    "rituels de succès judiciaire",
-    "marabout pour sortir de prison",
-    "rituel pour obtenir faveur du procureur",
-    "prières pour procès",
-    "rituels de protection juridique",
-    "rituels d’influence",
-    "marabout spécialisé en justice",
-    "rites et offrandes pour justice",
-    "manipulation spirituelle du juge",
-    "rituel efficace pour procès",
-    "rituels pour succès légal",
-    "marabout pour affaire judiciaire",
-    "rituels rapides pour procès",
-    "consultation spirituelle pour justice",
-    "rituel pour succès au tribunal",
-    "marabout expérimenté en justice",
-    "rituels traditionnels béninois",
-    "rituel vaudou pour succès judiciaire",
-    "marabout expert en affaires judiciaires",
-    "rituels pour obtenir justice",
-    "rites pour victoire au tribunal",
-    "rituels efficaces pour procès",
-    "rituel complet pour justice",
-    "rituels puissants bénin",
-    "marabout pour résoudre affaire judiciaire",
-    "rituel pour résoudre un procès",
-    "marabout puissant pour justice",
-    "rituel pour gain rapide de procès"
   ],
   path: "/rituels/affaires-justice",
+  tags: ["justice", "procès", "protection juridique", "rituel puissant"],
+  section: "Justice",
+  authorName: "Medium Ali Moussa",
+  type: "Article",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
-
 
 export const seoGalerie: SEOProps = {
   title: "Galerie Mystique : Rituels, Cérémonies et Transformations",
@@ -144,6 +101,11 @@ export const seoGalerie: SEOProps = {
     "tradition ancestrale",
   ],
   path: "/galerie",
+  tags: ["galerie", "rituels", "cérémonies", "transformation"],
+  section: "Galerie",
+  authorName: "Medium Ali Moussa",
+  type: "WebSite",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoTemoignages: SEOProps = {
@@ -158,6 +120,11 @@ export const seoTemoignages: SEOProps = {
     "rituels prospérité",
   ],
   path: "/temoignages",
+  tags: ["témoignages", "clients", "retour affectif", "envoutement"],
+  section: "Témoignages",
+  authorName: "Medium Ali Moussa",
+  type: "WebSite",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoRituels: SEOProps = {
@@ -174,6 +141,11 @@ export const seoRituels: SEOProps = {
     "rituel protection",
   ],
   path: "/rituels",
+  tags: ["rituels", "amour", "chance", "prospérité", "protection"],
+  section: "Rituels",
+  authorName: "Medium Ali Moussa",
+  type: "WebSite",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoContact: SEOProps = {
@@ -188,6 +160,11 @@ export const seoContact: SEOProps = {
     "aide spirituelle",
   ],
   path: "/contact",
+  tags: ["contact", "consultation", "rituels", "aide spirituelle"],
+  section: "Contact",
+  authorName: "Medium Ali Moussa",
+  type: "WebSite",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoPropos: SEOProps = {
@@ -203,4 +180,9 @@ export const seoPropos: SEOProps = {
     "rituels protection",
   ],
   path: "/a-propos",
+  tags: ["Ali Moussa", "maître mystique", "tradition ancestrale"],
+  section: "À propos",
+  authorName: "Medium Ali Moussa",
+  type: "WebSite",
+  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
