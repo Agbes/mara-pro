@@ -226,19 +226,31 @@ export async function seoPropsFromCategoryDynamic(categorySlug: string): Promise
 // ----------------------------
 // Génération dynamique Next.js
 // ----------------------------
-export async function generateMetadataTag({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const seoProps = await seoPropsFromTagDynamic(params.slug);
+
+type Props = {
+  params: Promise<{ slug: string }>
+}
+
+
+export async function generateMetadataTag({ params }: Props): Promise<Metadata> {
+    const slug = (await params).slug
+
+  const seoProps = await seoPropsFromTagDynamic(slug);
   return generateStaticMetadata(seoProps);
 }
 
-export async function generateMetadataCategory({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const seoProps = await seoPropsFromCategoryDynamic(params.slug);
+export async function generateMetadataCategory({ params }: Props): Promise<Metadata> {
+  const slug = (await params).slug
+
+  const seoProps = await seoPropsFromCategoryDynamic(slug);
   return generateStaticMetadata(seoProps);
 }
 
-export async function generateMetadataArticle({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadataArticle({ params }: Props): Promise<Metadata> {
+      const slug = (await params).slug
+
   const article = await prisma.article.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: {
       category: { select: { id: true, name: true, slug: true } },
       tagsArticles: { select: { tag: { select: { id: true, name: true, slug: true } }, assignedAt: true } },
