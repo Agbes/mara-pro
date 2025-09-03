@@ -19,9 +19,7 @@ export default async function Home() {
     return (
         <>
           
-            <Head>
-                <JsonLD seo={seoAccueil} />
-            </Head>
+
             <HeroSection />
 
             <DomainsSection />
