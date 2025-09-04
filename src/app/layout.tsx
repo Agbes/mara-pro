@@ -1,11 +1,20 @@
 // src/app/layout.tsx
+import type { Metadata } from "next";
 import "./globals.css";
 import SessionWrappers from "@/lib/sessionWrappers";
 import { FooterAnalytic, HeadAnalytic } from "@/components/GoogleAnalytic";
 import Head from "next/head";
-import { Inter } from "next/font/google";
 
-const inter = Inter({subsets: ["latin"]});
+export const metadata: Metadata = {
+  title: "Medium Moussa Ali",
+  description: "Puissant medium marabout Moussa Ali",
+  icons: {
+    icon: "/Ali-moussa.png",
+  },
+  other: {
+    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -18,7 +27,7 @@ export default function RootLayout({
         <Head>
           <HeadAnalytic />
         </Head>
-      <body className={`${inter.className} antialiased text-slate-800`}>
+        <body className="antialiased text-slate-800">
           {children}
           <FooterAnalytic />
         </body>
