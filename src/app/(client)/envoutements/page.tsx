@@ -7,11 +7,10 @@ import Image from "next/image";
 export const dynamic = "force-dynamic";
 
 
-import { generateStaticMetadata } from "@/lib/seo";
+import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import { seoEnvoutement } from "@/data/seoData";
 import { redirect } from "next/navigation";
-import Head from "next/head";
-import { JsonLD } from "@/components/JsonLD";
+
 
 
 export const metadata = generateStaticMetadata(seoEnvoutement);
@@ -68,8 +67,11 @@ export default async function EnvoutementPage() {
         </article>
       </BlogLayout>
 
-      <JsonLD seo={seoEnvoutement} />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: generateJSONLD(seoEnvoutement) }}
+      />
     </>
   );
 }

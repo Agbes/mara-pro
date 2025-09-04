@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { generateStaticMetadata } from "@/lib/seo";
+import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import { seoPropos } from "@/data/seoData";
-import { JsonLD } from "@/components/JsonLD";
 
 export const metadata = generateStaticMetadata(seoPropos);
 
@@ -114,7 +113,11 @@ export default function AboutPage() {
           </Link>
         </section>
       </div>
-      <JsonLD seo={seoPropos} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: generateJSONLD(seoPropos) }}
+      />
 
     </>
   );

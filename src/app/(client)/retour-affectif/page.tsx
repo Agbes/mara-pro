@@ -6,10 +6,9 @@ import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
-import { generateStaticMetadata } from "@/lib/seo";
+import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import { seoRetourAffectif } from "@/data/seoData";
 import { redirect } from "next/navigation";
-import { JsonLD } from "@/components/JsonLD";
 
 
 export const metadata = generateStaticMetadata(seoRetourAffectif);
@@ -23,7 +22,6 @@ export default async function RetourAffectifPage() {
 
   return (
     <>
-      <JsonLD seo={seoRetourAffectif} />
       <BlogLayout content={contentGalerie}>
         <article className="lg:col-span-3 space-y-10">
           {/* Articles de la catégorie */}
@@ -84,7 +82,10 @@ export default async function RetourAffectifPage() {
           </div>
         </article>
       </BlogLayout>
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: generateJSONLD(seoRetourAffectif) }}
+      />
     </>
   );
 }

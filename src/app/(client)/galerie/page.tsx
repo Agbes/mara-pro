@@ -7,9 +7,8 @@ import Image from "next/image";
 export const dynamic = "force-dynamic";
 
 
-import { generateStaticMetadata } from "@/lib/seo";
+import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import { seoGalerie } from "@/data/seoData";
-import { JsonLD } from "@/components/JsonLD";
 
 
 export const metadata = generateStaticMetadata(seoGalerie);
@@ -79,7 +78,11 @@ export default async function GaleriPage() {
           </div>
         </article>
       </BlogLayout>
-      <JsonLD seo={seoGalerie} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: generateJSONLD(seoGalerie) }}
+      />
 
     </>
   );

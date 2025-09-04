@@ -8,9 +8,8 @@ import { contentTemoignages } from "@/lib/getContentPage";
 export const dynamic = "force-dynamic";
 
 
-import { generateStaticMetadata } from "@/lib/seo";
+import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import { seoTemoignages } from "@/data/seoData";
-import { JsonLD } from "@/components/JsonLD";
 
 
 export const metadata = generateStaticMetadata(seoTemoignages);
@@ -58,8 +57,11 @@ export default async function TemoignagesPage() {
 
                 </article>
             </BlogLayout>
-            <JsonLD seo={seoTemoignages} />
 
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: generateJSONLD(seoTemoignages) }}
+            />
         </>
     );
 }

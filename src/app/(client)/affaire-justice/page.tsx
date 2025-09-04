@@ -1,5 +1,4 @@
 import BlogLayout from "@/components/Admin/BlogLayout";
-import { JsonLD } from "@/components/JsonLD";
 import { seoJustice } from "@/data/seoData";
 import { getArticlesByCategory } from "@/lib/getArticles";
 import { contentJustice } from "@/lib/getContentPage";
@@ -7,7 +6,7 @@ import { contentJustice } from "@/lib/getContentPage";
 export const dynamic = "force-dynamic";
 
 
-import { generateStaticMetadata } from "@/lib/seo";
+import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -83,8 +82,10 @@ export default async function JusticePage() {
                     </div>
                 </article>
             </BlogLayout>
-            <JsonLD seo={seoJustice} />
-
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: generateJSONLD(seoJustice) }}
+            />
         </>
     );
 }
