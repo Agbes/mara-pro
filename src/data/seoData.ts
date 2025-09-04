@@ -68,7 +68,6 @@ export const seoEnvoutement: SEOProps = {
   section: "Envoutement",
   authorName: "Medium Ali Moussa",
   type: "Article",
-  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoJustice: SEOProps = {
@@ -86,7 +85,6 @@ export const seoJustice: SEOProps = {
   section: "Justice",
   authorName: "Medium Ali Moussa",
   type: "Article",
-  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoGalerie: SEOProps = {
@@ -105,7 +103,6 @@ export const seoGalerie: SEOProps = {
   section: "Galerie",
   authorName: "Medium Ali Moussa",
   type: "WebSite",
-  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoTemoignages: SEOProps = {
@@ -124,7 +121,6 @@ export const seoTemoignages: SEOProps = {
   section: "Témoignages",
   authorName: "Medium Ali Moussa",
   type: "WebSite",
-  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoRituels: SEOProps = {
@@ -145,7 +141,6 @@ export const seoRituels: SEOProps = {
   section: "Rituels",
   authorName: "Medium Ali Moussa",
   type: "WebSite",
-  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoContact: SEOProps = {
@@ -164,7 +159,6 @@ export const seoContact: SEOProps = {
   section: "Contact",
   authorName: "Medium Ali Moussa",
   type: "WebSite",
-  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
 
 export const seoPropos: SEOProps = {
@@ -184,5 +178,4 @@ export const seoPropos: SEOProps = {
   section: "À propos",
   authorName: "Medium Ali Moussa",
   type: "WebSite",
-  other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
 };
