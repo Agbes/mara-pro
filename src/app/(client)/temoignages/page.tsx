@@ -15,8 +15,9 @@ import { seoTemoignages } from "@/data/seoData";
 export const metadata = generateStaticMetadata(seoTemoignages);
 
 
-export default async function TemoignagesPage() {
+// src/app/(client)/temoignages/page.tsx
 
+export default async function TemoignagesPage() {
     return (
         <>
             <BlogLayout content={contentTemoignages}>
@@ -28,6 +29,7 @@ export default async function TemoignagesPage() {
                             Quelques témoignages de nos clients
                         </h1>
 
+                        {/* Témoignages texte */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {temoignages.map((t) => (
                                 <Card
@@ -53,8 +55,36 @@ export default async function TemoignagesPage() {
                                 </Card>
                             ))}
                         </div>
-                    </div>
 
+                        {/* Témoignages vidéos */}
+                        <div className="mt-12">
+                            <h2 className="text-2xl font-bold mb-6 text-center">
+                                Témoignages en vidéos
+                            </h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                                <div className="w-full">
+                                    <video controls className="w-full rounded-2xl shadow-lg">
+                                        <source src="/video/video-temoignages1.mp4" type="video/mp4" />
+                                        Votre navigateur ne supporte pas la vidéo.
+                                    </video>
+                                </div>
+                                <div className="w-full">
+                                    <video controls className="w-full rounded-2xl shadow-lg">
+                                        <source src="/video/video-temoignages2.mp4" type="video/mp4" />
+                                        Votre navigateur ne supporte pas la vidéo.
+                                    </video>
+                                </div>
+                                <div className="w-full">
+                                    <video controls className="w-full rounded-2xl shadow-lg">
+                                        <source src="/video/video-temoignages3.mp4" type="video/mp4" />
+                                        Votre navigateur ne supporte pas la vidéo.
+                                    </video>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </article>
             </BlogLayout>
 
