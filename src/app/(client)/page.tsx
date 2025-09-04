@@ -7,10 +7,9 @@ import Testimonials from "@/components/Acceuille/Testimonials/Testimonials";
 
 export const dynamic = "force-dynamic";
 
-import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
+import { generateJSONLD } from "@/lib/seo";
 import { seoAccueil } from "@/data/seoData";
 
-export const metadata = generateStaticMetadata(seoAccueil);
 
 
 export default async function Home() {
