@@ -31,7 +31,7 @@ export default async function TemoignagesPage() {
 
                         {/* Témoignages texte */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {temoignages.map((t) => (
+                            {temoignages.map((t, index) => (
                                 <Card
                                     key={t.id}
                                     className="rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300"
@@ -39,8 +39,8 @@ export default async function TemoignagesPage() {
                                     <CardContent className="p-6">
                                         <div className="flex items-center mb-4">
                                             <Image
-                                                src={t.avatar}
-                                                alt={t.nom}
+                                                src={`/temoignages/${index + 1}.jpg`} 
+                                                alt= {`temoignages de ${t.nom}`} 
                                                 width={50}
                                                 height={50}
                                                 className="rounded-full mr-4"
