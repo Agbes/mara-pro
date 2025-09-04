@@ -6,20 +6,22 @@ import Testimonials from "@/components/Acceuille/Testimonials/Testimonials";
 
 import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import { seoAccueil } from "@/data/seoData";
-import Navbar from "@/components/Navigation/Navbar";
 import Footer from "@/components/Navigation/Footer/Footer";
+import Navbar from "@/components/Navigation/Navbar";
 
 export const metadata = generateStaticMetadata(seoAccueil);
 
 export default function Home() {
   return (
     <>
-          <Navbar /> 
+      <div className="fixed inset-x-0 top-0 h-[220px] -z-10 blob"></div>
+      <Navbar />
       <HeroSection />
       <DomainsSection />
       <Testimonials />
       <CallToAction />
       <ArticlesSection />
+
       <Footer />
 
       <script
