@@ -2,7 +2,7 @@ import { getAllArticles, getAllCategory, getAllTag } from "@/lib/getArticles";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.SITE_URL || "http://localhost:3000";
+  const baseUrl = process.env.SITE_URL || "https://www.medium-ali-moussa.com";
 
   const articles = await getAllArticles();
   const categories = await getAllCategory();
