@@ -171,3 +171,23 @@ export async function getAllCategory(): Promise<CategoryDTO[]> {  // Updated ret
     createdAt: category.createdAt.toISOString(),  
   }));
 }
+
+
+export async function getAllCategorySlug(): Promise<{ slug: string }[]> {
+  const categories = await prisma.category.findMany({
+    orderBy: { name: "asc" },
+    select: { slug: true }, // ⚡ uniquement le slug
+  });
+
+  return categories.map((c) => ({ slug: c.slug }));
+}
+
+
+export async function getAllTagSlug(): Promise<{ slug: string }[]> {
+  const tags = await prisma.tag.findMany({
+    orderBy: { name: "asc" },
+    select: { slug: true }, // ⚡ uniquement le slug
+  });
+
+  return tags.map((t) => ({ slug: t.slug }));
+}

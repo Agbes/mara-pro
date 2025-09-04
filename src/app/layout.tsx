@@ -3,8 +3,9 @@ import "./globals.css";
 import SessionWrappers from "@/lib/sessionWrappers";
 import { FooterAnalytic, HeadAnalytic } from "@/components/GoogleAnalytic";
 import Head from "next/head";
+import { Inter } from "next/font/google";
 
-
+const inter = Inter({subsets: ["latin"]});
 
 export default function RootLayout({
   children,
@@ -17,7 +18,7 @@ export default function RootLayout({
         <Head>
           <HeadAnalytic />
         </Head>
-        <body className="antialiased text-slate-800">
+      <body className={`${inter.className} antialiased text-slate-800`}>
           {children}
           <FooterAnalytic />
         </body>

@@ -8,6 +8,7 @@ import Head from "next/head";
 import { content } from "@/lib/getContentPage";
 import { generateMetadataCategory, seoPropsFromCategoryDynamic } from "@/lib/seo";
 import { JsonLD } from "@/components/JsonLD";
+import { getAllCategorySlug } from "@/lib/getArticles";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,10 @@ type Props = {
     params: Promise<{ slug: string }>; // ✅ params est une Promise
 };
 
+
+export async function generateStaticParams() {
+  return await getAllCategorySlug();
+}
 
 
 export async function generateMetadata({ params }: Props) {

@@ -10,6 +10,7 @@ import { redirect } from "next/navigation";
 import { generateMetadataTag, seoPropsFromTagDynamic } from "@/lib/seo";
 import { JsonLD } from "@/components/JsonLD";
 import Head from "next/head";
+import { getAllTagSlug } from "@/lib/getArticles";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,9 @@ type Props = {
     params: Promise<{ slug: string }>; // ✅ params est une Promise
 };
 
+export async function generateStaticParams() {
+  return await getAllTagSlug();
+}
 
 
 export async function generateMetadata({ params }: Props) {
