@@ -1,11 +1,7 @@
 // src/app/(client)/layout.tsx
 import Navbar from "@/components/Navigation/Navbar";
 import Footer from "@/components/Navigation/Footer/Footer";
-import { generateStaticMetadata } from "@/lib/seo";
-import { seoAccueil } from "@/data/seoData";
 
-
-export const metadata = generateStaticMetadata(seoAccueil);
 
 
 export default function ClientLayout({
