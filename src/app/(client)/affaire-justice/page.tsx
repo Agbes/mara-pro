@@ -8,7 +8,6 @@ export const dynamic = "force-dynamic";
 
 
 import { generateStaticMetadata } from "@/lib/seo";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -26,9 +25,6 @@ export default async function JusticePage() {
 
     return (
         <>
-            <Head>
-                <JsonLD seo={seoJustice} />
-            </Head>
             <BlogLayout content={contentJustice}>
                 <article className="lg:col-span-3 space-y-10">
                     <div className="container mx-auto px-4 py-8">
@@ -87,6 +83,7 @@ export default async function JusticePage() {
                     </div>
                 </article>
             </BlogLayout>
+            <JsonLD seo={seoJustice} />
 
         </>
     );

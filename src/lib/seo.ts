@@ -1,6 +1,7 @@
-import { Article } from "@prisma/client";
+import { Article as PrismaArticle } from "@prisma/client";
 import type { Metadata } from "next";
 import prisma from "./prisma";
+import type { WithContext, WebSite, Article as SchemaArticle } from "schema-dts";
 
 // ----------------------------
 // Typage SEO
@@ -19,6 +20,7 @@ export type SEOProps = {
   dateModified?: string;
   type?: "WebSite" | "Article";
 };
+
 
 // ----------------------------
 // Config site
@@ -105,23 +107,8 @@ export function generateStaticMetadata({
 // ----------------------------
 // JSON-LD pour Google
 // ----------------------------
-type JSONLD = {
-  "@context": "https://schema.org";
-  "@type": "WebSite" | "Article";
-  name: string;
-  description: string;
-  url: string;
-  image?: string;
-  author?: { "@type": "Person"; name: string };
-  datePublished?: string;
-  dateModified?: string;
-  keywords?: string;
-  publisher?: {
-    "@type": "Organization";
-    name: string;
-    logo: { "@type": "ImageObject"; url: string };
-  };
-};
+
+
 
 export function generateJSONLD({
   title,
@@ -131,49 +118,64 @@ export function generateJSONLD({
   authorName,
   datePublished,
   dateModified,
-  tags = [],
+  keywords = [],
   type = "WebSite",
 }: SEOProps) {
   const fullUrl = `${siteConfig.url}${path}`;
 
-  const json: JSONLD = {
-    "@context": "https://schema.org",
-    "@type": type,
-    name: title,
-    description,
-    url: fullUrl,
-  };
+  let jsonLd: WithContext<WebSite | SchemaArticle>;
 
-  if (image) json.image = image;
-  if (tags.length) json.keywords = tags.join(", ");
-
-  if (type === "Article") {
-    json.author = { "@type": "Person", name: authorName || "Medium Ali Moussa" };
-    if (datePublished) json.datePublished = datePublished;
-    if (dateModified) json.dateModified = dateModified;
-    json.publisher = {
-      "@type": "Organization",
-      name: siteConfig.name,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/favicon.ico`,
+  if (type === "WebSite") {
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: title,
+      url: fullUrl,
+      description,
+      ...(image && { image }),
+      ...(keywords.length && { keywords: keywords.join(", ") }),
+    };
+  } else {
+    jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      url: fullUrl,
+      ...(image && { image }),
+      ...(keywords.length && { keywords: keywords.join(", ") }),
+      author: {
+        "@type": "Person",
+        name: authorName || "Medium Ali Moussa",
+      },
+      ...(datePublished && { datePublished }),
+      ...(dateModified && { dateModified }),
+      publisher: {
+        "@type": "Organization",
+        name: siteConfig.name,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteConfig.url}/favicon.ico`,
+        },
       },
     };
   }
 
-  return JSON.stringify(json);
+  return JSON.stringify(jsonLd);
 }
+
 
 // ----------------------------
 // Typage exact pour article avec relations
 // ----------------------------
-export type ArticleWithRelations = Article & {
+export type ArticleWithRelations = PrismaArticle & {
   category: { id: number; name: string; slug: string } | null;
   tagsArticles: {
     assignedAt: Date;
     tag: { id: number; name: string; slug: string };
   }[];
 };
+
 
 // ----------------------------
 // SEO Props depuis un article

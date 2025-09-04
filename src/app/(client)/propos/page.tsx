@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { generateStaticMetadata } from "@/lib/seo";
 import { seoPropos } from "@/data/seoData";
-import Head from "next/head";
 import { JsonLD } from "@/components/JsonLD";
 
 export const metadata = generateStaticMetadata(seoPropos);
@@ -11,9 +10,6 @@ export const metadata = generateStaticMetadata(seoPropos);
 export default function AboutPage() {
   return (
     <>
-      <Head>
-        <JsonLD seo={seoPropos} />
-      </Head>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <header className="text-center mb-16">
@@ -118,6 +114,8 @@ export default function AboutPage() {
           </Link>
         </section>
       </div>
+      <JsonLD seo={seoPropos} />
+
     </>
   );
 }

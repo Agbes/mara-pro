@@ -10,7 +10,6 @@ export const dynamic = "force-dynamic";
 
 import { generateStaticMetadata } from "@/lib/seo";
 import { seoTemoignages } from "@/data/seoData";
-import Head from "next/head";
 import { JsonLD } from "@/components/JsonLD";
 
 
@@ -21,9 +20,6 @@ export default async function TemoignagesPage() {
 
     return (
         <>
-            <Head>
-                <JsonLD seo={seoTemoignages} />
-            </Head>
             <BlogLayout content={contentTemoignages}>
                 <article className="lg:col-span-3 space-y-10">
 
@@ -62,6 +58,8 @@ export default async function TemoignagesPage() {
 
                 </article>
             </BlogLayout>
+            <JsonLD seo={seoTemoignages} />
+
         </>
     );
 }

@@ -9,7 +9,6 @@ export const dynamic = "force-dynamic";
 
 import { generateStaticMetadata } from "@/lib/seo";
 import { seoGalerie } from "@/data/seoData";
-import Head from "next/head";
 import { JsonLD } from "@/components/JsonLD";
 
 
@@ -49,9 +48,6 @@ export default async function GaleriPage() {
 
   return (
     <>
-      <Head>
-        <JsonLD seo={seoGalerie} />
-      </Head>
       <BlogLayout content={contentGalerie}>
         <article className="lg:col-span-3 space-y-10">
           <div className="container mx-auto px-4 py-8">
@@ -83,6 +79,8 @@ export default async function GaleriPage() {
           </div>
         </article>
       </BlogLayout>
+      <JsonLD seo={seoGalerie} />
+
     </>
   );
 }

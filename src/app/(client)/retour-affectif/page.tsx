@@ -9,7 +9,6 @@ export const dynamic = "force-dynamic";
 import { generateStaticMetadata } from "@/lib/seo";
 import { seoRetourAffectif } from "@/data/seoData";
 import { redirect } from "next/navigation";
-import Head from "next/head";
 import { JsonLD } from "@/components/JsonLD";
 
 
@@ -24,9 +23,7 @@ export default async function RetourAffectifPage() {
 
   return (
     <>
-      <Head>
-        <JsonLD seo={seoRetourAffectif} />
-      </Head>
+      <JsonLD seo={seoRetourAffectif} />
       <BlogLayout content={contentGalerie}>
         <article className="lg:col-span-3 space-y-10">
           {/* Articles de la catégorie */}
