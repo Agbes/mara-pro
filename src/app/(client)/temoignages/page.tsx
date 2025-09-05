@@ -1,7 +1,7 @@
 import BlogLayout from "@/components/Admin/BlogLayout";
 
 import { Card, CardContent } from "@/components/Temoignages/CardTemoignages";
-import { temoignages } from "@/data/temoignages";
+import { temoignages, temoignagesVideos } from "@/data/temoignages";
 import Image from "next/image";
 import { contentTemoignages } from "@/lib/getContentPage";
 
@@ -10,6 +10,7 @@ export const dynamic = "force-dynamic";
 
 import { generateJSONLD, generateStaticMetadata } from "@/lib/seo";
 import { seoTemoignages } from "@/data/seoData";
+import VideoSEO from "@/components/VideoSEO";
 
 
 export const metadata = generateStaticMetadata(seoTemoignages);
@@ -39,8 +40,8 @@ export default async function TemoignagesPage() {
                                     <CardContent className="p-6">
                                         <div className="flex items-center mb-4">
                                             <Image
-                                                src={`/temoignages/${index + 1}.jpg`} 
-                                                alt= {`temoignages de ${t.nom}`} 
+                                                src={`/temoignages/${index + 1}.jpg`}
+                                                alt={`temoignages de ${t.nom}`}
                                                 width={50}
                                                 height={50}
                                                 className="rounded-full mr-4"
@@ -61,28 +62,24 @@ export default async function TemoignagesPage() {
                             <h2 className="text-2xl font-bold mb-6 text-center">
                                 Témoignages en vidéos
                             </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-                                <div className="w-full">
-                                    <video controls className="w-full rounded-2xl shadow-lg">
-                                        <source src="/video/video-temoignages1.mp4" type="video/mp4" />
-                                        Votre navigateur ne supporte pas la vidéo.
-                                    </video>
-                                </div>
-                                <div className="w-full">
-                                    <video controls className="w-full rounded-2xl shadow-lg">
-                                        <source src="/video/video-temoignages2.mp4" type="video/mp4" />
-                                        Votre navigateur ne supporte pas la vidéo.
-                                    </video>
-                                </div>
-                                <div className="w-full">
-                                    <video controls className="w-full rounded-2xl shadow-lg">
-                                        <source src="/video/video-temoignages3.mp4" type="video/mp4" />
-                                        Votre navigateur ne supporte pas la vidéo.
-                                    </video>
-                                </div>
 
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {temoignagesVideos.map((video, index) => (
+                                    <VideoSEO
+                                        key={index}
+                                        title={video.title}
+                                        description={video.description}
+                                        mp4Src={video.mp4Src}
+                                        webmSrc={video.webmSrc}
+                                        thumbnail={video.thumbnail}
+                                        transcript={video.transcript}
+                                        uploadDate={video.uploadDate}
+                                        subtitles={video.subtitles}
+                                    />
+                                ))}
                             </div>
                         </div>
+
 
                     </div>
                 </article>

@@ -153,3 +153,58 @@ export const temoignages: Temoignage[] = [
       "Mes projets professionnels échouaient toujours au dernier moment. Après l’intervention de Maître Ali Moussa, j’ai décroché un partenariat important qui a transformé mon avenir. Sa guidance a changé ma destinée.",
   },
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+export type TemoignageVideo = {
+  title: string;
+  description: string;
+  mp4Src: string;
+  webmSrc?: string;
+  thumbnail: string;
+  transcript: string;
+  uploadDate: string;
+  subtitles?: string;
+};
+
+export const temoignagesVideos: TemoignageVideo[] = [
+  {
+    title: "Témoignage vidéo de Marie - Retour d’affection",
+    description: "Marie raconte comment elle a retrouvé l’amour et la sérénité grâce au Medium Ali Moussa.",
+    mp4Src: "/video/video-temoignages1.mp4",
+    webmSrc: "/video/video-temoignages1.webm",
+    thumbnail: "/temoignages/1.jpg",
+    transcript: "Bonjour, je suis Marie de Lyon. Après une rupture difficile, j’ai fait appel au Medium Ali Moussa. ...",
+    uploadDate: "2025-09-01",
+    subtitles: "/video/subtitles/video-temoignages1.vtt",
+  },
+  {
+    title: "Témoignage vidéo de Jean - Prospérité retrouvée",
+    description: "Jean explique comment il a surmonté ses difficultés financières grâce au Medium Ali Moussa..",
+    mp4Src: "/video/video-temoignages2.mp4",
+    webmSrc: "/video/video-temoignages2.webm",
+    thumbnail: "/temoignages/5.jpg",
+    transcript: "Bonjour, je m’appelle Jean et je vis à Paris. J’étais dans une période de blocages financiers...",
+    uploadDate: "2025-09-02",
+    subtitles: "/video/subtitles/video-temoignages2.vtt",
+  },
+  {
+    title: "Témoignage vidéo de Aïcha - Protection spirituelle",
+    description: "Aïcha témoigne de la protection spirituelle reçue grâce au Medium Ali Moussa..",
+    mp4Src: "/video/video-temoignages3.mp4",
+    webmSrc: "/video/video-temoignages3.webm",
+    thumbnail: "/temoignages/3.jpg",
+    transcript: "Je suis Aïcha, originaire de Cotonou. J’ai traversé une période difficile face à des énergies négatives...",
+    uploadDate: "2025-09-03",
+    subtitles: "/video/subtitles/video-temoignages3.vtt",
+  },
+];
