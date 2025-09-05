@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     // 3️⃣ Email pour TOI (Maître Moussa)
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
-      to: process.env.CONTACT_EMAIL,
+      to: process.env.EMAIL_USER,
       subject: `📩 Nouveau message : ${subject}`,
       html: `
         <div style="font-family: 'Segoe UI', sans-serif; color: #333;">
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
 
     // 4️⃣ Email automatique pour l’UTILISATEUR
     await transporter.sendMail({
-      from: `"Maître Ali Moussa" <${process.env.SMTP_USER}>`,
+      from: `"Maître Ali Moussa" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: "✅ Votre message a bien été reçu",
       html: `
