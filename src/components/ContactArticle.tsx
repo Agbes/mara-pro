@@ -13,7 +13,7 @@ export default function ContactArticle() {
           href="mailto:mediumalimoussa@gmail.com"
           className="text-gray-700 hover:text-cyan-700 transition"
         >
-mediumalimoussa@gmail.com        </a>
+          mediumalimoussa@gmail.com        </a>
       </div>
 
       <div className="flex items-center space-x-3">
