@@ -52,8 +52,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             label: "Témoignages",
             icon: Users,
             children: [
-                { id: "video", label: "Vidéos", href: "/admin/temoignages/videos", icon: Video },
-                { id: "texte", label: "Textes", href: "/admin/temoignages/textes", icon: Type },
+                { id: "video", label: "Vidéos", href: "#", icon: Video },
+                { id: "texte", label: "Textes", href: "#", icon: Type },
             ],
         },
 
