@@ -10,11 +10,10 @@ export default function ContactArticle() {
       <div className="flex items-center space-x-3">
         <Mail className="w-5 h-5 text-cyan-600" />
         <a
-          href="mailto:mediumali578@gmail.com"
+          href="mailto:mediumalimoussa@gmail.com"
           className="text-gray-700 hover:text-cyan-700 transition"
         >
-          mediumali578@gmail.com
-        </a>
+mediumalimoussa@gmail.com        </a>
       </div>
 
       <div className="flex items-center space-x-3">

@@ -96,7 +96,7 @@ export default function ContactClient() {
               value={form.email}
               onChange={handleChange}
               required
-              placeholder="exemple@email.com"
+              placeholder="mediumalimoussa@gmail.com"
               className="border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:outline-none transition transform duration-200 hover:scale-105"
             />
           </div>
@@ -155,7 +155,7 @@ export default function ContactClient() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-cyan-700" />
-                <span>mediumali578@gmail.com</span>
+                <span>mediumalimoussa@gmail.com</span>
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-cyan-700" />

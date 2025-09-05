@@ -12,7 +12,7 @@ export default function Footer() {
         </span>
 
         <Link
-          href="https://wa.me/2290198879310"
+          href="https://wa.me/22998879310"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Ouvrir WhatsApp"
@@ -104,8 +104,8 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Contact</h4>
           <p className="text-slate-700">
-            <Link href="mailto:mediumali578@gmail.com" className="hover:text-cyan-600">
-              mediumali578@gmail.com
+            <Link href="mailto:mediumalimoussa@gmail.com" className="hover:text-cyan-600">
+              mediumalimoussa@gmail.com
             </Link>
           </p>
           <p className="text-slate-700">
