@@ -180,7 +180,7 @@ export const seoRetourAffectif: SEOProps = {
     "médium marabout retour affectif île de Guadeloupe medium Ali Moussa",
     "medium retour de l'etre aimé"
   ],
-  path: "/rituels/retour-affectif",
+  path: "/retour-affectif",
   tags: ["retour affectif", "amour", "réconciliation", "couple"],
   section: "Retour Affectif",
   authorName: "Medium Ali Moussa",
@@ -209,7 +209,7 @@ export const seoEnvoutement: SEOProps = {
     "à quoi servent les rituels en classe",
     "rituel de sort d'altération"
   ],
-  path: "/rituels/envoutement",
+  path: "envoutements",
   tags: [
     "envoutement",
     "amour",
@@ -272,7 +272,7 @@ export const seoJustice: SEOProps = {
     "mystique dans le bureau du juge",
     "rituel contre ses ennemis"
   ],
-  path: "/rituels/affaires-justice",
+  path: "/affaires-justice",
   tags: [
     "justice",
     "procès",
@@ -355,7 +355,7 @@ export const seoRituels: SEOProps = {
   tags: ["rituels", "amour", "chance", "prospérité", "protection", "justice"],
   section: "Rituels",
   authorName: "Medium Ali Moussa",
-  type: "WebSite",
+  type: "Article",
 };
 
 export const seoContact: SEOProps = {

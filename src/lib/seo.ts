@@ -159,6 +159,10 @@ export function generateJSONLD({
           url: `${siteConfig.url}/favicon.ico`,
         },
       },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": fullUrl,
+      },
     };
   }
 
@@ -197,7 +201,7 @@ export function seoPropsFromArticle(article: ArticleWithRelations): SEOProps {
     datePublished: article.createdAt?.toISOString(),
     dateModified: article.updatedAt?.toISOString(),
     type: "Article",
-    //other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
+    other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
   };
 }
 
@@ -210,7 +214,7 @@ export async function seoPropsFromTagDynamic(tagSlug: string): Promise<SEOProps>
     return {
       title: `Tag non trouvé`,
       description: `Ce tag n’existe pas`,
-      path: `/tags/${tagSlug}`,
+      path: `/tag/${tagSlug}`,
     };
   }
 
@@ -224,10 +228,10 @@ export async function seoPropsFromTagDynamic(tagSlug: string): Promise<SEOProps>
   return {
     title: `Articles sur ${tag.name}`,
     description: `Tous les articles liés au tag "${tag.name}"`,
-    path: `/tags/${tag.slug}`,
+    path: `/tag/${tag.slug}`,
     tags: allTags,
-    type: "WebSite",
-    //other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
+    type: "Article",
+    other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
   };
 }
 
@@ -240,7 +244,7 @@ export async function seoPropsFromCategoryDynamic(categorySlug: string): Promise
     return {
       title: `Catégorie non trouvée`,
       description: `Cette catégorie n’existe pas`,
-      path: `/category/${categorySlug}`,
+      path: `/categorie/${categorySlug}`,
     };
   }
 
@@ -254,11 +258,11 @@ export async function seoPropsFromCategoryDynamic(categorySlug: string): Promise
   return {
     title: `Articles dans la catégorie ${category.name}`,
     description: `Tous les articles de la catégorie "${category.name}"`,
-    path: `/category/${category.slug}`,
+    path: `/categorie/${category.slug}`,
     tags: allTags,
     section: category.name,
-    type: "WebSite",
-    //other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
+    type: "Article",
+    other: { "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "" },
   };
 }
 
