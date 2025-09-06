@@ -18,7 +18,7 @@ export const metadata = generateStaticMetadata(seoEnvoutement);
 
 export default async function EnvoutementPage() {
   // ✅ Récupère category + tous les articles pour suggestions
-  const { category, articlesAll } = await getArticlesByCategory("envoutement");
+  const { category, articlesAll } = await getArticlesByCategory("envoutements");
 
   if (!category) {
     redirect("/rituels");

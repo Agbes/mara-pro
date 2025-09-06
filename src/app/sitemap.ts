@@ -16,14 +16,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const urlCategories: MetadataRoute.Sitemap = categories.map((c) => ({
-    url: `${baseUrl}/categories/${c.slug}`,
+    url: `${baseUrl}/categorie/${c.slug}`,
     lastModified: c.createdAt || new Date(),
     changeFrequency: "daily",
     priority: 0.7,
   }));
 
   const urlTags: MetadataRoute.Sitemap = tags.map((t) => ({
-    url: `${baseUrl}/tags/${t.slug}`,
+    url: `${baseUrl}/tag/${t.slug}`,
     lastModified: t.createdAt || new Date(),
     changeFrequency: "daily",
     priority: 0.6,
@@ -61,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/envoûtements`,
+      url: `${baseUrl}/envoutements`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.5,
