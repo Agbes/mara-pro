@@ -16,7 +16,7 @@ export const metadata = generateStaticMetadata(seoJustice);
 
 
 export default async function JusticePage() {
-    const { category, articlesAll } = await getArticlesByCategory("problemes-de-justice	");
+    const { category, articlesAll } = await getArticlesByCategory("problemes-de-justice");
 
     if (!category) {
         redirect("/rituels");
