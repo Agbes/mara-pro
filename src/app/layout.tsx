@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SessionWrappers from "@/lib/sessionWrappers";
 import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAds } from "@/components/GoogleAds";
 
 
 export const metadata: Metadata = {
@@ -25,7 +26,8 @@ export default function RootLayout({
         <SessionWrappers>
             <html lang="fr">
                 <GoogleTagManager gtmId="GTM-KSDX9JB8" />
-
+                <GoogleAds id="AW-10976855808" />
+            
                 <body className="antialiased text-slate-800">
                     {children}
                 </body>
