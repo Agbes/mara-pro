@@ -26,7 +26,7 @@ export default function RootLayout({
         <SessionWrappers>
             <html lang="fr">
                 <GoogleTagManager gtmId="GTM-KSDX9JB8" />
-                <GoogleAds id="AW-10976855808" />
+                {/* <GoogleAds id="AW-10976855808" /> */}
             
                 <body className="antialiased text-slate-800">
                     {children}
