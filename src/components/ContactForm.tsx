@@ -151,7 +151,7 @@ export default function ContactClient() {
             <ul className="space-y-4 text-slate-700">
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-cyan-700" />
-                <span>+229 01 98 87 93 10</span>
+                <span>+2290168379977</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-cyan-700" />
@@ -172,7 +172,7 @@ export default function ContactClient() {
               Je suis disponible à tout moment pour vous apporter une réponse rapide.
             </p>
             <Link
-              href="https://wa.me/2290198879310"
+              href="https://wa.me/2290168379977"
               target="_blank"
               className="inline-block bg-white text-green-600 font-bold px-6 py-3 rounded-full hover:bg-slate-100 transition"
             >

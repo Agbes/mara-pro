@@ -19,10 +19,10 @@ export default function ContactArticle() {
       <div className="flex items-center space-x-3">
         <Phone className="w-5 h-5 text-cyan-600" />
         <a
-          href="tel:+2290198879310"
+          href="tel:+2290168379977"
           className="text-gray-700 hover:text-cyan-700 transition"
         >
-          +229 01 98 87 93 10
+          +2290168379977
         </a>
       </div>
 
