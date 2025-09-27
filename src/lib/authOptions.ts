@@ -2,9 +2,11 @@
 import bcrypt from "bcryptjs";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions, User } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "./prisma";
 
 export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -32,7 +34,6 @@ export const authOptions: NextAuthOptions = {
             "Vous n'êtes pas l'administrateur, veuillez contacter un administrateur"
           );
 
-        // ✅ On retourne bien un `User` typé
         const customUser: User = {
           id: user.id.toString(),
           name: user.name ?? undefined,
@@ -44,18 +45,28 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  session: { strategy: "jwt" },
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 jours
+    updateAge: 24 * 60 * 60,   // 24h -> refresh du token
+  },
+  jwt: {
+    maxAge: 30 * 24 * 60 * 60, // 30 jours (s’aligne avec la session)
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.superUser = (user as User).superUser;
       }
-      return token;
+      return {
+        ...token,
+        superUser: token.superUser, // conserve toujours la valeur
+      };
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub as string;
-        session.user.superUser = Boolean(token.superUser);
+        session.user.superUser = token.superUser as boolean;
       }
       return session;
     },
