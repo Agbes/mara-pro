@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SessionWrappers from "@/lib/sessionWrappers";
-import { GoogleTagManager } from '@next/third-parties/google'
-import { GoogleAds } from "@/components/GoogleAds";
+// import { GoogleTagManager } from '@next/third-parties/google'
+// import { GoogleAds } from "@/components/GoogleAds";
 
 
 export const metadata: Metadata = {
