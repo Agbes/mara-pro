@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SessionWrappers from "@/lib/sessionWrappers";
+import Script from "next/script";
 // import { GoogleTagManager } from '@next/third-parties/google'
 // import { GoogleAds } from "@/components/GoogleAds";
 
@@ -14,8 +15,6 @@ export const metadata: Metadata = {
     },
     other: {
         "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
-        "src": process.env.NEXT_PUBLIC_PIXEL_SRC || "",
-
     },
 };
 
@@ -32,6 +31,12 @@ export default function RootLayout({
 
                 <body className="antialiased text-slate-800">
                     {children}
+                    <Script
+                        src="https://shown.io/metrics/a68pRjQ202"
+                        strategy="afterInteractive" // ou "lazyOnload"
+                        defer
+                        type="text/javascript"
+                    />
                 </body>
             </html>
         </SessionWrappers>
