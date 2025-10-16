@@ -14,6 +14,8 @@ export const metadata: Metadata = {
     },
     other: {
         "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_CONSOLE || "",
+        "src": process.env.NEXT_PUBLIC_PIXEL_SRC || "",
+
     },
 };
 
@@ -27,7 +29,7 @@ export default function RootLayout({
             <html lang="fr">
                 {/* <GoogleTagManager gtmId="GTM-KSDX9JB8" /> */}
                 {/* <GoogleAds id="AW-10976855808" /> */}
-            
+
                 <body className="antialiased text-slate-800">
                     {children}
                 </body>
