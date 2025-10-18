@@ -33,7 +33,7 @@ export default function RootLayout({
                     {children}
                     <Script
                         src="https://shown.io/metrics/a68pRjQ202"
-                        strategy="afterInteractive" // ou "lazyOnload"
+                        strategy="afterInteractive"
                         defer
                         type="text/javascript"
                     />
