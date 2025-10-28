@@ -93,7 +93,7 @@ export default async function CategoriePage({ params }: Props) {
                             {category.articles.map((article) => (
                                 <Link
                                     key={article.id}
-                                    href={`/articles/${article.slug}`}
+                                    href={`/rituels/${article.slug}`}
                                     className="block bg-white rounded-lg shadow hover:shadow-md transition duration-200 overflow-hidden"
                                 >
                                     {article.coverImage && (

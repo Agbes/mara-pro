@@ -2,7 +2,7 @@ import { getAllArticles, getAllCategory, getAllTag } from "@/lib/getArticles";
 import { MetadataRoute } from "next";
 
 
-export const dynamic = 'force-static';
+// export const dynamic = 'force-static';
 export const revalidate = 86400; // 1 jour
 
 
@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "daily",
     priority: 0.8,
   }));
-  
+
 
   const urlCategories: MetadataRoute.Sitemap = categories.map((c) => ({
     url: `${baseUrl}categorie/${encodeURIComponent(c.slug)}`,

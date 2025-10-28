@@ -272,7 +272,7 @@ export const seoJustice: SEOProps = {
     "mystique dans le bureau du juge",
     "rituel contre ses ennemis"
   ],
-  path: "/affaires-justice",
+  path: "/affaire-justice",
   tags: [
     "justice",
     "procès",
@@ -397,7 +397,7 @@ export const seoPropos: SEOProps = {
     "histoire marabout africain",
     "maître marabout puissant"
   ],
-  path: "/a-propos",
+  path: "/propos",
   tags: ["Ali Moussa", "maître mystique", "marabout puissant", "tradition ancestrale"],
   section: "À propos",
   authorName: "Medium Ali Moussa",
