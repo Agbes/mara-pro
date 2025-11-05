@@ -15,7 +15,7 @@ import { getAllTagSlug } from "@/lib/getArticles";
 export const dynamic = "force-dynamic";
 
 type Props = {
-    params: Promise<{ slug: string }>; // ✅ params est une Promise
+    params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -24,8 +24,7 @@ export async function generateStaticParams() {
 
 
 export async function generateMetadata({ params }: Props) {
-    const { slug } = await params; // 🔑 await la promesse
-
+    const { slug } = await params;
     return generateMetadataTag({ params: { slug } });
 }
 
@@ -36,8 +35,6 @@ export async function generateMetadata({ params }: Props) {
 export default async function TagPage({ params }: Props) {
     const { slug } = await params;
 
-
-    // Récupération du tag + ses articles via tagsArticles
     const tag = await prisma.tag.findUnique({
         where: { slug },
         include: {

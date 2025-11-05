@@ -123,9 +123,9 @@ export default async function ArticlePage({ params }: Props) {
                 <article className="lg:col-span-3 space-y-10">
                     {/* Header */}
                     <header>
-                        <h1 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">
                             {article.title}
-                        </h1>
+                        </h2>
                         <p className="text-slate-500 text-sm">
                             {new Date(article.updatedAt).toLocaleDateString("fr-FR", {
                                 year: "numeric",
